@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+xhost +
+ENV="staging" \
+API_PORT="5000" \
+DATABASE_URL="sqlite:////usr/src/flaskapp/data/database.db" \
+docker-compose $*
+

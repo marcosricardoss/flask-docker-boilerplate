@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+xhost +
+ENV="testing" \
+API_PORT="5000" \
+DATABASE_URL="sqlite:////usr/src/flaskapp/tests/database.db" \
+docker-compose $*

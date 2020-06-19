@@ -1,0 +1,28 @@
+version: '3.2'
+services:
+  flask-docker-boilerplate:
+    container_name: flask-docker-boilerplate
+    build:
+      context: .
+      args:
+        BUILD_ENV: $ENV
+    image: jabil/flask-docker-boilerplate:v1
+    environment:
+      DATABASE_URL: $DATABASE_URL
+      FLASK_ENV: $ENV
+      FLASK_PORT: $API_PORT
+      FLASK_APP: app
+    command: bash -c "/usr/src/flaskapp/start"
+    volumes:
+      - "./app:/usr/src/flaskapp/app"
+      - "./data:/usr/src/flaskapp/data"
+      - "./media:/usr/src/flaskapp/media"
+      - "./migrations:/usr/src/flaskapp/migrations"
+      - "./instance:/usr/src/flaskapp/instance"
+      - "./tests:/usr/src/flaskapp/tests"
+      - "./htmlcov:/usr/src/flaskapp/htmlcov"      
+    restart: always
+    ports:
+      - "${API_PORT}:${API_PORT}"
+    
+    
