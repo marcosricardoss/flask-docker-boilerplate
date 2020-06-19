@@ -7,7 +7,7 @@ that is in the same class.
 
 from datetime import datetime
 
-from sqlalchemy import inspect
+
 from sqlalchemy import Column, Integer, String, Boolean, DateTime
 from app.database import Base
 
@@ -24,6 +24,8 @@ class Model:
 
     def remove_session(self):
         """Removes an object from the session its current session."""
+
+        from sqlalchemy import inspect
 
         session = inspect(self).session
         if session:
